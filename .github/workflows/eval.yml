@@ -1,0 +1,29 @@
+name: eval
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: npm install
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Tests, including the defective variants
+        run: npm test
+
+      - name: Evaluation and release gate
+        run: npm run eval
