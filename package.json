@@ -1,0 +1,20 @@
+{
+  "name": "ai-triage-evals",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An evaluation harness for a non-deterministic AI assistant: contract, grounding and safety checks, labelled accuracy, run-to-run consistency, metamorphic tests and a release gate.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "eval": "tsx scripts/eval.ts",
+    "eval:baseline": "tsx scripts/eval.ts --write-baseline",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.25.76"
+  }
+}
